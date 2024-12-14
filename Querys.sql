@@ -41,9 +41,9 @@ SELECT
 	Ano, 
 	Duracao
 FROM 
-Filmes 
+	Filmes 
 WHERE 
-ano > 2000
+	ano > 2000
 
 -- QUERY 6
 SELECT 
@@ -69,4 +69,75 @@ ORDER BY
     SUM(Duracao) DESC;
 
 -- QUERY 8
+SELECT 
+	 id, 
+	 PrimeiroNome, 
+	 UltimoNome,
+	 Genero 
+FROM 
+	Atores 
+WHERE 
+	Genero = 'M';
+
+-- QUERY 9
+SELECT 
+	id, 
+	PrimeiroNome, 
+	UltimoNome,
+	Genero 
+FROM 
+	Atores 
+WHERE  
+	Genero = 'F'
+ORDER BY 
+	PrimeiroNome
+
+-- QUERY 10
+SELECT 
+    Filmes.Nome,
+    Generos.Genero
+FROM 
+    Filmes
+INNER JOIN 
+    FilmesGenero
+ON 
+    Filmes.Id = FilmesGenero.IdFilme
+INNER JOIN 
+    Generos
+ON 
+    FilmesGenero.IdGenero = Generos.Id; 
+
+-- QUERY 11
+SELECT 
+	Filmes.Nome, 
+	Generos.Genero
+FROM 
+	Filmes 
+INNER JOIN 
+	FilmesGenero
+ON
+	Filmes.Id = FilmesGenero.idFilme
+INNER JOIN 
+	Generos 
+ON
+	Generos.Id = FilmesGenero.IdGenero
+WHERE 
+	Generos.Genero = 'Mistério'
+
+-- QUERY 12
+SELECT 
+	Filmes.Nome, 
+	Atores.PrimeiroNome, 
+	Atores.UltimoNome, 
+	ElencoFilme.Papel 
+FROM 
+	Filmes 
+INNER JOIN
+	ElencoFilme
+ON
+	Filmes.Id = ElencoFilme.IdFilme 
+INNER JOIN
+	Atores
+ON
+	Atores.Id = ElencoFilme.IdAtor 
 
